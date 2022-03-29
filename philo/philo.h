@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/22 21:10:50 by icastell         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:14:43 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 # include <mlx.h>
 # include <string.h>
+# include <pthread.h>
 
 # define MAX "2147483647"
 # define MIN "-2147483648"
@@ -47,72 +48,41 @@ must be greater than 60\n"
 
 typedef struct s_philo_args
 {
-	int	num_philos;
-	int	time_die;
-	int	time_eat;
-	int	time_sleep;
-	int	num_meals;
+	int				num_philos;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				num_meals;
+	int				death;
+	int				num_philos_eated;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	lock;
+	struct s_philo	*philo;
 }				t_philo_args;
 
-typedef struct s_lista
+typedef struct s_philo
 {
-	struct s_nodo	*head;
-	int				length;
-}			t_lista;
+	int					id;
+	int					left_fork;
+	int					right_fork;
+	int					num_eatings;
+	int					max_num_meals;
+	int					died;
+	uint64_t			last_meal;
+	pthread_t			thread_id;
+	struct s_philo_args	*args;
+}				t_philo;
 
-typedef struct s_mapa
-{
-	char				**map;
-	int					width;
-	int					height;
-	int					num_collectible;
-	int					num_exit;
-	int					num_player;
-	int					x_player;
-	int					y_player;
-	int					count;
-	int					valid;
-	struct s_so_long	*game;
-}				t_mapa;
 
-typedef struct s_window
-{
-	int	width;
-	int	height;
-	int	x;
-	int	y;
-}				t_window;
+void		ft_error(size_t value);
+size_t		ft_strlen(char *str);
+int			ft_isdigit(int c);
+int			ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+int			ft_check_args(int argc, char **argv);
+void		ft_start_philosophers(t_philo_args *args);
+uint64_t    ft_timestamp(void);
 
-typedef struct s_img
-{
-	void	*img;
-	int		img_width;
-	int		img_height;
-}				t_img;
-
-typedef struct s_images
-{
-	struct s_img	wall;
-	struct s_img	empty_space;
-	struct s_img	collectible;
-	struct s_img	exit;
-	struct s_img	player;	
-}				t_images;
-
-typedef struct s_so_long
-{
-	void			*mlx;
-	void			*window;
-	struct s_mapa	mapa;
-	struct s_window	ventana;
-	struct s_images	imagenes;
-}				t_so_long;
-
-void	ft_error(size_t value);
-size_t	ft_strlen(char *str);
-int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
-int		ft_check_args(int argc, char **argv);
 /*int		ft_check_extension(char	*map_name);
 int		ft_get_map(t_mapa *mapa, char *filename);
 void	ft_read_map_file(t_mapa *mapa, char *filename);

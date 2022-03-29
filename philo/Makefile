@@ -6,7 +6,7 @@
 #    By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 18:18:35 by icastell          #+#    #+#              #
-#    Updated: 2022/03/22 19:41:53 by icastell         ###   ########.fr        #
+#    Updated: 2022/03/29 20:08:36 by icastell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRCS	=	philo.c\
 			ft_check_valid_num.c\
 			ft_print_utils.c\
 			ft_utils.c\
+			ft_time.c\
+			ft_philosophers.c\
 
 
 OBJS	:=	$(SRCS:.c=.o)
