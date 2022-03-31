@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:41 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/29 20:23:07 by icastell         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:50:06 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,36 @@ static void ft_create_philosophers(t_philo_args *args)
 		args->philo[i].args = args;
 		i++;
 	}
+	return ;
 }
 
 static void	ft_destroy_philosophers(t_philo_args *args)
 {
+	int	i;
+
 	pthread_mutex_destroy(&args->lock);
+	i = args->num_philos;
+	while (args->num_philos > 0 && --i >=0)
+		pthread_mutex_destroy(&args->forks[i]);
 	free(args->forks);
 	free(args->philo);
+	return ;
+}
+
+static int	ft_mutex_init(t_philo_args *args)
+{
+	int	i;
+	
+	i = 0;
+	if (pthread_mutex_init(&args->lock, NULL) != 0)
+		return (1);
+	while (i < args->num_philos)
+	{
+		if (pthread_mutex_init(&args->forks[i], NULL) != 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 static void	ft_print_philosophers(t_philo_args *args)
@@ -63,8 +86,13 @@ static void	ft_print_philosophers(t_philo_args *args)
 
 void    ft_start_philosophers(t_philo_args *args)
 {
-	pthread_mutex_init(&args->lock, NULL);
-	ft_create_philosophers(args);
-	ft_print_philosophers(args);
-	ft_destroy_philosophers(args);
+	if (ft_mutex_init(args) == 1)
+		ft_error(7);
+	else
+	{
+		ft_create_philosophers(args);
+		ft_print_philosophers(args);
+		ft_destroy_philosophers(args);
+	}
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:43 by icastell         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:30:45 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ must be positive\n"
 # define ERROR_5 "The number of meals must be positive\n"
 # define ERROR_6 "Time to die, time to eat and time to sleep \
 must be greater than 60\n"
+# define ERROR_7 "Failed to initialize mutex\n"
 
 typedef struct s_philo_args
 {

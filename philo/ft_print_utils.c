@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:10:38 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/22 21:07:06 by icastell         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:31:22 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@ void	ft_error(size_t value)
 		ft_putstr_fd(ERROR_5, 1);
 	else if (value == 6)
 		ft_putstr_fd(ERROR_6, 1);
+	else if (value == 7)
+		ft_putstr_fd(ERROR_7, 1);
+	return ;
 }
