@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:02:55 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/31 21:05:43 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:34:39 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	ft_init_params(t_philo_args *args)
 	args->num_meals = 0;
 	args->death = 0;
 	args->num_philos_eated = 0;
+	args->num_mutex_forks = 0;
 }
 
 static void	ft_check_params(int argc, t_philo_args *args)
@@ -91,6 +92,6 @@ int	main(int argc, char **argv)
 	}
 	else//if ((argc == 1) || (argc > 6))
 		ft_error(1);
-	system("leaks -q philo");
+	//system("leaks -q philo");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:41 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/31 20:50:06 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:23:52 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void ft_create_philosophers(t_philo_args *args)
 	int i;
 
 	i = 0;
-	args->forks = ft_calloc(args->num_philos, sizeof(pthread_mutex_t));
 	args->philo = ft_calloc(args->num_philos, sizeof(t_philo));
 	while (i < args->num_philos)
 	{
@@ -40,58 +39,69 @@ static void ft_create_philosophers(t_philo_args *args)
 static void	ft_destroy_philosophers(t_philo_args *args)
 {
 	int	i;
+	int	num_forks_to_destroy;
 
+	i = 0;
+	num_forks_to_destroy = 0;
 	pthread_mutex_destroy(&args->lock);
-	i = args->num_philos;
-	while (args->num_philos > 0 && --i >=0)
+	if (args->num_mutex_forks == 0)
+		num_forks_to_destroy = args->num_philos;
+	else
+		num_forks_to_destroy = args->num_mutex_forks;
+	while (i < num_forks_to_destroy)
+	{
 		pthread_mutex_destroy(&args->forks[i]);
-	free(args->forks);
-	free(args->philo);
+		i++;
+	}
+	if (args->forks)
+		free(args->forks);
+	if (args->philo)
+		free(args->philo);
 	return ;
 }
 
-static int	ft_mutex_init(t_philo_args *args)
+static void	*ft_kk(void *arg)
 {
-	int	i;
-	
-	i = 0;
-	if (pthread_mutex_init(&args->lock, NULL) != 0)
-		return (1);
-	while (i < args->num_philos)
-	{
-		if (pthread_mutex_init(&args->forks[i], NULL) != 0)
-			return (1);
-		i++;
-	}
+	int	id;
+
+	id = *((int *)arg);
+	printf("Hola, soy el hilo %d\n", id);
 	return (0);
 }
 
-static void	ft_print_philosophers(t_philo_args *args)
+static void	ft_create_pthreads(t_philo_args *args)
 {
 	int	i;
 
 	i = 0;
 	while (i < args->num_philos)
 	{
-		printf("Filósofo %d:\n", args->philo[i].id);
-		printf("   Tenedor izdo.: %d\n", args->philo[i].left_fork);
-		printf("   Tenedor dcho.: %d\n", args->philo[i].right_fork);
-		printf("   Nº de comidas: %d\n", args->philo[i].num_eatings);
-		printf("   Nº máx. de comidas: %d\n", args->philo[i].max_num_meals);
-		printf("   ¿Está muerto?: %d\n", args->philo[i].died);
-		printf("   Instante de última comida: %lld\n", args->philo[i].last_meal);
+		if (pthread_create(&args->philo[i].thread_id, NULL, ft_kk, &args->philo[i].id) != 0)
+		{
+			ft_error(8);
+			break ;
+		}
+		else
+			pthread_join(args->philo[i].thread_id, NULL);
 		i++;
 	}
+	return ;
 }
 
 void    ft_start_philosophers(t_philo_args *args)
 {
-	if (ft_mutex_init(args) == 1)
+	if (ft_mutex_init_lock(args) == 1)
 		ft_error(7);
+	else if (ft_mutex_init_forks(args) == 1)
+	{
+		ft_error(7);
+		ft_destroy_philosophers(args);
+	}
 	else
 	{
 		ft_create_philosophers(args);
 		ft_print_philosophers(args);
+		ft_create_pthreads(args);
 		ft_destroy_philosophers(args);
 	}
 	return ;

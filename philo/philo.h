@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/31 18:30:45 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:18:33 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ must be positive\n"
 # define ERROR_6 "Time to die, time to eat and time to sleep \
 must be greater than 60\n"
 # define ERROR_7 "Failed to initialize mutex\n"
+# define ERROR_8 "Failed to create threads\n"
 
 typedef struct s_philo_args
 {
@@ -57,6 +58,7 @@ typedef struct s_philo_args
 	int				death;
 	int				num_philos_eated;
 	pthread_mutex_t	*forks;
+	int				num_mutex_forks;
 	pthread_mutex_t	lock;
 	struct s_philo	*philo;
 }				t_philo_args;
@@ -82,7 +84,12 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_check_args(int argc, char **argv);
 void		ft_start_philosophers(t_philo_args *args);
+int			ft_mutex_init_lock(t_philo_args *args);
+int			ft_mutex_init_forks(t_philo_args *args);
+void		ft_print_philosophers(t_philo_args *args);
 uint64_t    ft_timestamp(void);
+uint64_t	ft_timediff(uint64_t t_present, u_int64_t t_past);
+//void		*ft_kk(void *arg);
 
 /*int		ft_check_extension(char	*map_name);
 int		ft_get_map(t_mapa *mapa, char *filename);
