@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 18:58:18 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/05 19:00:40 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:21:06 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_mutex_init_lock(t_philo_args *args)
 int	ft_mutex_init_forks(t_philo_args *args)
 {
 	int	i;
-	
+
 	i = 0;
 	args->forks = ft_calloc(args->num_philos, sizeof(pthread_mutex_t));
 	while (i < args->num_philos)

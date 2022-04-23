@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:02:55 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/05 17:34:39 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/23 21:03:30 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	ft_get_params(int argc, char **argv, t_philo_args *args)
 		args->time_sleep = ft_atoi(argv[4]);
 		if (argc == 6)
 			args->num_meals = ft_atoi(argv[5]);
-		if (args->num_philos > 1 && args->num_philos <= 200
+		args->num_philos_no_eated = args->num_philos;
+		if (args->num_philos > 0 && args->num_philos <= 200
 			&& args->time_die >= 60
 			&& args->time_eat >= 60
 			&& args->time_sleep >= 60)
@@ -39,7 +40,8 @@ static void	ft_init_params(t_philo_args *args)
 	args->time_sleep = 0;
 	args->num_meals = 0;
 	args->death = 0;
-	args->num_philos_eated = 0;
+	args->num_philos_no_eated = 0;
+	args->start = ft_timestamp();
 	args->num_mutex_forks = 0;
 }
 
@@ -60,7 +62,7 @@ static void	ft_check_params(int argc, t_philo_args *args)
 int	main(int argc, char **argv)
 {
 	t_philo_args	args;
-	int	i;
+	int				i;
 
 	i = 0;
 	ft_init_params(&args);
@@ -70,7 +72,7 @@ int	main(int argc, char **argv)
 		{
 			if (ft_get_params(argc, argv, &args) == 1)
 			{
-				printf("todo ha ido bien. Debo empezar con los hilos\n");
+				/*printf("todo ha ido bien. Debo empezar con los hilos\n");
 				printf("nº de argumentos: %d\n", argc);
 				while (i < argc)
 				{
@@ -81,7 +83,7 @@ int	main(int argc, char **argv)
 				printf("num_time_die: %d\n", args.time_die);
 				printf("num_time_eat: %d\n", args.time_eat);
 				printf("num_time_sleep: %d\n", args.time_sleep);
-				printf("num_meals: %d\n", args.num_meals);
+				printf("num_meals: %d\n", args.num_meals);*/
 				ft_start_philosophers(&args);
 			}
 			else

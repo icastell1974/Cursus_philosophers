@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 19:18:42 by icastell          #+#    #+#             */
-/*   Updated: 2022/03/22 20:18:12 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:20:09 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ int	ft_check_args(int argc, char **argv)
 	}
 	return (1);
 }
-
