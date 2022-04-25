@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:02:55 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 21:03:30 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:16:18 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ static void	ft_check_params(int argc, t_philo_args *args)
 int	main(int argc, char **argv)
 {
 	t_philo_args	args;
-	int				i;
 
-	i = 0;
 	ft_init_params(&args);
 	if (argc == 5 || argc == 6)
 	{

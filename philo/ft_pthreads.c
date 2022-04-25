@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 18:36:52 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 21:40:56 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:17:20 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_loop(t_philo_args *args)
 {
 	int		i;
 	//int		meals;
-	t_philo	filosofo;
+	//t_philo	filosofo;
 	
 	//meals = args->num_meals;
 	while (!args->death && args->num_philos_no_eated)
@@ -74,7 +74,7 @@ void	ft_loop(t_philo_args *args)
 		while (i < args->num_philos && !args->death
 			&& args->num_philos_no_eated)
 		{
-			filosofo = args->philo[i];
+			//filosofo = args->philo[i];
 			if ((int)(ft_timestamp() - args->philo[i].last_meal)
 				> args->time_die && args->num_philos_no_eated)
 			{
@@ -83,7 +83,7 @@ void	ft_loop(t_philo_args *args)
 				pthread_mutex_unlock(&args->lock);
 				usleep(100);
 				//if (args->num_meals > 0 && meals)
-					ft_print_philo(&args->philo[i], H_DIED);
+				ft_print_philo(&args->philo[i], H_DIED);
 			}
 			usleep(100);
 			i++;

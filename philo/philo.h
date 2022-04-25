@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 21:40:16 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:15:51 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <mlx.h>
 # include <string.h>
 # include <pthread.h>
 
