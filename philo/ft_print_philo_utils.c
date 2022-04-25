@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:10:38 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 22:04:51 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:09:19 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,5 @@ void	ft_print_status(t_philo *philo, char *status)
 		ft_print_philo(philo, status);
 		pthread_mutex_unlock(&philo->args->lock);
 	}
-	/*else if (philo->args->death)
-	{
-		pthread_mutex_lock(&philo->args->lock);
-		ft_print_philo(philo, H_DIED);
-		pthread_mutex_unlock(&philo->args->lock);
-	}
-	else if (!philo->args->death && !philo->args->num_meals)
-	{
-		pthread_mutex_lock(&philo->args->lock);
-		ft_print_philo(philo, H_ALL_EATINGS);
-		pthread_mutex_unlock(&philo->args->lock);
-	}*/
 	return ;
 }

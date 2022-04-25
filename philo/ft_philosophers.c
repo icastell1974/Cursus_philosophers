@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:19:41 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 22:10:08 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:08:50 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,10 @@ static void	ft_create_philosophers(t_philo_args *args)
 	args->philo = ft_calloc(args->num_philos, sizeof(t_philo));
 	while (i < args->num_philos)
 	{
-		args->philo[i].id = i; // + 1;
+		args->philo[i].id = i;
 		args->philo[i].left_fork = args->philo[i].id;
 		args->philo[i].right_fork = (args->philo[i].left_fork + 1)
 			% args->num_philos;
-		/*if (args->philo[i].id == args->num_philos)
-			args->philo[i].right_fork = 1;
-		else
-			args->philo[i].right_fork = args->philo[i].left_fork + 1;*/
 		args->philo[i].num_eatings = 0;
 		args->philo[i].max_num_meals = args->num_meals;
 		args->philo[i].died = 0;
@@ -74,7 +70,6 @@ void	ft_start_philosophers(t_philo_args *args)
 	else
 	{
 		ft_create_philosophers(args);
-		//ft_print_philosophers(args);
 		ft_create_pthreads(args);
 		ft_loop(args);
 		ft_destroy_philosophers(args);

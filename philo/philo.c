@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:02:55 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/25 17:16:18 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 18:07:58 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,15 @@ int	main(int argc, char **argv)
 		if (ft_check_args(argc, argv) == 1)
 		{
 			if (ft_get_params(argc, argv, &args) == 1)
-			{
-				/*printf("todo ha ido bien. Debo empezar con los hilos\n");
-				printf("nº de argumentos: %d\n", argc);
-				while (i < argc)
-				{
-					printf("argumentos: %s\n", argv[i]);
-					i++;
-				}
-				printf("num_philos: %d\n", args.num_philos);
-				printf("num_time_die: %d\n", args.time_die);
-				printf("num_time_eat: %d\n", args.time_eat);
-				printf("num_time_sleep: %d\n", args.time_sleep);
-				printf("num_meals: %d\n", args.num_meals);*/
 				ft_start_philosophers(&args);
-			}
 			else
 				ft_check_params(argc, &args);
 		}
 		else
 			ft_error(3);
 	}
-	else//if ((argc == 1) || (argc > 6))
+	else
 		ft_error(1);
-	//system("leaks -q philo");
+	system("leaks -q philo");
 	return (0);
 }

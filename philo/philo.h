@@ -6,7 +6,7 @@
 /*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/25 17:15:51 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/25 20:25:06 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void		ft_print_philo(t_philo *philo, char *status);
 void		ft_print_status(t_philo *philo, char *status);
 void		ft_print_philosophers(t_philo_args *args); //esta función hay que borrarla
 uint64_t    ft_timestamp(void);
-//uint64_t	ft_timediff(uint64_t t_present, u_int64_t t_past);
 int			ft_usleep(t_philo_args *args, uint64_t time);
 void		ft_create_pthreads(t_philo_args *args);
 void		ft_loop(t_philo_args *args);
