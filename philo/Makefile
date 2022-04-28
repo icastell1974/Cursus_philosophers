@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: icastell <icastell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 18:18:35 by icastell          #+#    #+#              #
-#    Updated: 2022/04/25 18:07:20 by icastell         ###   ########.fr        #
+#    Updated: 2022/04/28 20:51:18 by icastell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ $(NAME)	:	$(OBJS)
 
 normi:
 			norminette -R CheckForbiddenSourceHeader $(SRCS)
+			norminette -R CheckForbiddenSourceHeader philo.h
 #			norminette -R CheckForbiddenSourceHeader | grep "Error"
 #			norminette -R CheckForbiddenSourceHeader | grep "OK"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: icastell <icastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:02:55 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/25 18:07:58 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/28 20:38:31 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_error(1);
-	system("leaks -q philo");
 	return (0);
 }

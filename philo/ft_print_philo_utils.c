@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_philo_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: icastell <icastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 17:10:38 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/25 18:09:19 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/28 20:34:53 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,6 @@ void	ft_error(size_t value)
 	else if (value == 8)
 		ft_putstr_fd(ERROR_8, 1);
 	return ;
-}
-
-void	ft_print_philosophers(t_philo_args *args)
-{
-	int	i;
-
-	i = 0;
-	while (i < args->num_philos)
-	{
-		printf("Filósofo %d:\n", args->philo[i].id);
-		printf("   Tenedor izdo.: %d\n", args->philo[i].left_fork);
-		printf("   Tenedor dcho.: %d\n", args->philo[i].right_fork);
-		printf("   Nº de comidas: %d\n", args->philo[i].num_eatings);
-		printf("   Nº máx. de comidas: %d\n", args->philo[i].max_num_meals);
-		printf("   ¿Está muerto?: %d\n", args->philo[i].died);
-		printf("   Instante de última comida: %lld\n", args->philo[i].last_meal);
-		printf("   Nº de mutex_forks inicializados: %d\n",
-			args->num_mutex_forks);
-		i++;
-	}
 }
 
 void	ft_print_philo(t_philo *philo, char *status)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: icastell <icastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:41:21 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/25 20:25:06 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/28 20:48:52 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef struct s_philo
 	struct s_philo_args	*args;
 }				t_philo;
 
-
 void		ft_error(size_t value);
 size_t		ft_strlen(char *str);
 int			ft_isdigit(int c);
@@ -92,8 +91,7 @@ int			ft_mutex_init_lock(t_philo_args *args);
 int			ft_mutex_init_forks(t_philo_args *args);
 void		ft_print_philo(t_philo *philo, char *status);
 void		ft_print_status(t_philo *philo, char *status);
-void		ft_print_philosophers(t_philo_args *args); //esta función hay que borrarla
-uint64_t    ft_timestamp(void);
+uint64_t	ft_timestamp(void);
 int			ft_usleep(t_philo_args *args, uint64_t time);
 void		ft_create_pthreads(t_philo_args *args);
 void		ft_loop(t_philo_args *args);

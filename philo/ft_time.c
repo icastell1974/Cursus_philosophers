@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: icastell <icastell@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: icastell <icastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:55:17 by icastell          #+#    #+#             */
-/*   Updated: 2022/04/23 22:31:11 by icastell         ###   ########.fr       */
+/*   Updated: 2022/04/28 20:34:13 by icastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ uint64_t	ft_timestamp(void)
 	gettimeofday(&t, NULL);
 	return (t.tv_sec * 1000 + t.tv_usec / 1000);
 }
-
-/*uint64_t	ft_timediff(uint64_t t_present, u_int64_t t_past)
-{
-	return (t_present - t_past);
-}*/
 
 int	ft_usleep(t_philo_args *args, uint64_t time)
 {
